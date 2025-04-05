@@ -51,23 +51,36 @@ export default function Preview() {
         type="text"
         value={note.title}
         onChange={(e) => updateNote("title", e.currentTarget.value)}
-        class="text-2xl font-bold w-full p-2 border-b border-gray-300 focus:outline-none"
+        class="text-4xl font-bold w-full p-2 border-b border-gray-300 focus:outline-none"
       />
-
-      <div class="flex justify-end mb-2">
-        <button 
-          onClick={() => setIsEditing(!isEditing)}
-          class="px-3 py-1 bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
-        >
+    
+      <div class="flex justify-between items-center mb-2 text-sm text-gray-500 ">
+        <div class="flex gap-4 items-cente">
+          <span>Created: {new Date(note.createdAt).toLocaleString()}</span>
+          <span>Updated: {new Date(note.updatedAt).toLocaleString()}</span>
+          
+        </div>
+        <div class="flex items-center">
+            
+            <div class="mr-2 flex gap-4">
+                <span>{note.content.length} characters</span>
+                <span> {note.content.split(/\s+/).filter(Boolean).length} words</span>
+            </div>
+            <button 
+                onClick={() => setIsEditing(!isEditing)}
+                class="px-3 py-1 bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
+            >
           {isEditing ? "Preview" : "Edit"}
         </button>
+        </div>
+        
       </div>
 
       {isEditing ? (
         <textarea
           value={note.content}
           onChange={(e) => updateNote("content", e.currentTarget.value)}
-          class="w-full p-2 focus:outline-none flex-grow resize-none font-mono"
+          class="w-full p-2 focus:outline-none flex-grow resize-none font-atkinson"
           placeholder="Markdown Editor..."
         />
       ) : (

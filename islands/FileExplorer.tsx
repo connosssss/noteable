@@ -64,7 +64,7 @@ export default function FileExplorer() {
             
             <li 
               key={note.id}
-              class=" hover:bg-emerald-500  rounded cursor-pointer text-emerald-50 flex justify-between items-center w-full pl-2
+              class=" hover:bg-emerald-500  rounded cursor-pointer text-white flex justify-between items-center w-full pl-2
               "
               onClick={() => {
                 localStorage.setItem("selectedNoteId", note.id);
