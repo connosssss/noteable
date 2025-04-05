@@ -1,5 +1,5 @@
 
-import CreateNote from "../islands/CreateNote.tsx";
+import FileExplorer from "../islands/FileExplorer.tsx";
 
 export default function Sidebar() {
   return (
@@ -7,8 +7,7 @@ export default function Sidebar() {
       <div class='h-24 w-full bg-emerald-400 flex items-center justify-center'>
         <h1 class='text-5xl text-emerald-100'>noteable</h1>
       </div>
-      
-      <CreateNote />
+      <FileExplorer />
     </div>  
-  )
+  );
 }
