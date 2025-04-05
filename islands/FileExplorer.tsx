@@ -28,7 +28,7 @@ export default function FileExplorer() {
     const noteId = crypto.randomUUID();
     const newNote = {
       id: noteId,
-      title: "!!!! to come !!!!",
+      title: "Untitled",
       content: "",
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
@@ -48,20 +48,25 @@ export default function FileExplorer() {
 
   return (
     <div class="flex flex-col h-full">
-      <div class="flex overflow-y-auto">
-        <ul class="flex flex-col gap-y-6 p-6">
+      <div class="flex overflow-y-auto w-full">
+        <ul class="flex flex-col gap-y-6 p-6 w-full">
           {notes.map(note => (
+            
             <li 
-              key={note.id} 
-              class="p-2 bg-emerald-300 rounded cursor-pointer text-emerald-50 flex justify-between items-center"
+              key={note.id}
+              class="p-2 bg-emerald-300 rounded cursor-pointer text-emerald-50 flex justify-between items-center w-full"
+              onClick={() => {
+                localStorage.setItem("selectedNoteId", note.id);
+                window.dispatchEvent(new Event("storage"));
+              }}
             >
-              <span>{note.id}</span>
+              <span class="flex-grow truncate mr-2">{note.title}</span>
               <button 
                 onClick={(e) => {
                   e.stopPropagation();
                   deleteNote(note.id);
                 }}
-                class="bg-emerald-400 hover:bg-emerald-600 rounded-md px-2 py-4 transition-colors"
+                class="bg-emerald-400 hover:bg-emerald-600 rounded-md px-2 py-4 transition-colors flex-shrink-0"
               >
                 ×
               </button>
@@ -71,7 +76,7 @@ export default function FileExplorer() {
       </div>
       
       <button 
-        class="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded transition-colors mt-auto p-5"
+        class="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded transition-colors p-5"
         onClick={createNote}
       >
         Create New Note
