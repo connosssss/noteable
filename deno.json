@@ -35,9 +35,5 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "nodeModulesDir": "auto",
-  "tasks": {
-    "dev": "deno run -A --watch=static/,routes/,islands/,components/ dev.ts",
-    "start": "deno run -A main.ts"
-  }
+  "nodeModulesDir": true
 }
