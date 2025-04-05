@@ -48,25 +48,38 @@ export default function FileExplorer() {
 
   return (
     <div class="flex flex-col h-full">
+        <div class='w-full bg-emerald-600 text-white transition-colors h-8 
+        flex flex-col justify-center items-center'>
+        <button 
+        class=" w-6 h-6 bg-emerald-700 hover:bg-emerald-900 rounded-md transition-colors "
+        onClick={createNote}
+      >
+        +
+      </button>
+        </div>
+        
       <div class="flex overflow-y-auto w-full">
-        <ul class="flex flex-col gap-y-6 p-6 w-full">
+        <ul class="flex flex-col gap-y-6 w-full justify-start pt-4">
           {notes.map(note => (
             
             <li 
               key={note.id}
-              class="p-2 bg-emerald-300 rounded cursor-pointer text-emerald-50 flex justify-between items-center w-full"
+              class=" hover:bg-emerald-500  rounded cursor-pointer text-emerald-50 flex justify-between items-center w-full pl-2
+              "
               onClick={() => {
                 localStorage.setItem("selectedNoteId", note.id);
                 window.dispatchEvent(new Event("storage"));
               }}
-            >
-              <span class="flex-grow truncate mr-2">{note.title}</span>
+            >   
+              <div><span class="font-bold text-xl">  · </span>
+              <span class="flex-grow truncate mr-2">  {note.title}</span>
+                </div>
               <button 
                 onClick={(e) => {
                   e.stopPropagation();
                   deleteNote(note.id);
                 }}
-                class="bg-emerald-400 hover:bg-emerald-600 rounded-md px-2 py-4 transition-colors flex-shrink-0"
+                class="bg-emerald-600 hover:bg-emerald-800 rounded-md  transition-colors px-2 mr-3"
               >
                 ×
               </button>
@@ -75,12 +88,7 @@ export default function FileExplorer() {
         </ul>
       </div>
       
-      <button 
-        class="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded transition-colors p-5"
-        onClick={createNote}
-      >
-        Create New Note
-      </button>
+      
     </div>
   );
 }
