@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "@tailwindcss/typography": "npm:@tailwindcss/typography",
+    "marked": "npm:marked"
+  }
+}

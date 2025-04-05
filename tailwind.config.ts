@@ -1,4 +1,5 @@
 import { type Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 export default {
   content: [
@@ -10,5 +11,8 @@ export default {
         atkison: ['"Atkinson Hyperlegible"', 'sans-serif']
       }
     }
-  }
+  },
+  plugins: [
+    typography,
+  ],
 } satisfies Config;
